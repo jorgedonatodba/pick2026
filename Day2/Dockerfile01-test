@@ -1,0 +1,12 @@
+FROM ubuntu
+USER root
+RUN apt update && apt install nginx -y
+COPY index.html /usr/share/nginx/html/
+EXPOSE 80
+#SHELL [ "/bin/bash" ]
+VOLUME [ "/mnt/dados" ]
+RUN echo "Hello from Dockerfile08" >> /mnt/dados/info.txt 
+RUN touch /mnt/dados/info2.txt
+RUN ls -ltrR /mnt/dados
+
+CMD ["nginx","-g"," daemon off;"]

@@ -1,0 +1,823 @@
+   45  sudo snap search docker
+   46  sudo snap install docker
+   99  docker build -t jorgedonato/conversao-temperatura .
+  100  sudo useradd -aG docker $USER
+  101  sudo usermod -aG docker $USER
+  102  sudo newgrp docker
+  104  sudo snap remove docker
+  105  sudo snap install docker
+  106  docker build -t jorgedonato/conversao-temperatura .
+  107  sudo groupadd docker
+  108  sudo usermod -aG docker ${USER}
+  109  docker build -t jorgedonato/conversao-temperatura .
+  114  docker build -t jorgedonato/conversao-temperatura .
+  115  sudo usermod -aG docker ${USER}
+  116  docker build -t jorgedonato/conversao-temperatura .
+  117  docker run hello-world
+  228  docker build -t jorgedonato/java-demo:v1 .
+  229  docker image -l
+  230  docker image -ls
+  231  docker image ls
+  232  docker run jorgedonato/java-demo
+  233  docker run jorgedonato/java-demo:v1
+  234  docker run jorgedonato/java-demo:v1 -p 8080:8080
+  235  docker run jorgedonato/java-demo:v1 -p 9000:8080
+  236  docker run jorgedonato/java-demo:v1 -p 80:8080
+  237  docker run jorgedonato/java-demo:v1 -p 127.0.0.1:80:8080/tcp
+  238  docker ps -a
+  239  docker rm -h
+  240  docker ps -h
+  241  docker ps -q
+  242  docker ps -aq
+  243  docker rm ${docker ps -q}
+  244  docker rm d
+  245  docker rm 1c7017eb9009 20c4aa4c12ad df3052dddf7b d8497d17ca5e 8509c3915166
+  246  docker ps -a
+  247  docker run -d jorgedonato/java-demo:v1 -p 127.0.0.1:80:8080/tcp
+  248  docker log b75a2d2713bbd20789b539ac81f31d090c0eff24ebf10fc67ccef17530ff96e6
+  249  docker logs b75a2d2713bbd20789b539ac81f31d090c0eff24ebf10fc67ccef17530ff96e6
+  250  docker inspect b75a2d2713bbd20789b539ac81f31d090c0eff24ebf10fc67ccef17530ff96e6
+  251  docker ps -a
+  252  docker rm b75a2d2713bb -f
+  253  docker image ls
+  254  docker image rm eab39cc99ff1
+  256  docker build -t jorgedonato/java-demo:v1 .
+  257  docker run -d jorgedonato/java-demo:v1 -p 127.0.0.1:80:8080/tcp
+  258  docker logs 55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  259  docker inspect 55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  262  cd docker
+  264  cd /var/snap/docker/common/var-lib-docker/containers/55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  265  sudo /var/snap/docker/common/var-lib-docker/containers/55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  266  sudo cd /var/snap/docker/common/var-lib-docker/containers/55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  267  sudo ls /var/snap/docker/common/var-lib-docker/containers/55c30fe1e0cd20c64821c4fdef754279de64745c0b06071bb9c14a869829b6cd
+  268  docker ps -a
+  269  docker rm 55c -f
+  270  docker image rm jorgedonato/java-demo:v1
+  271  docker build -t java-demo .
+  272  docker run -d -p 8080:8080 java-demo
+  275  docker ps -a
+  276  docker rm d44 -f
+  277  docker image rm java-demo
+  278  docker build -t java-demo .
+  669  docker
+  671  docker ls
+  681  docker ls
+  682  docker ps -a
+  709  sudo apt search docker-compose
+  710  sudo apt install docker-compose
+  720  vi docker-compose.yml
+  721  docker compose up -d
+  722  docker-compose up -d
+  725  docker ps -a
+  726  docker image ls
+  940  mkdir docker
+  941  cd docker
+  950  docker build -t jorgedonato/kube-news:v1 .
+  951  docker login
+  953  docker build -t jorgedonato/kube-news:v1 -f src/Dockerfile src/
+  954  docker tag jorgedonato/kube-news:v1 jorgedonato/kube-news:latest
+  955  docker image ls
+  956  docker push jorgedonato/kube-news:v1
+  957  docker push jorgedonato/kube-news:latest
+  958  docker network create kube_news_net
+  959  docker network inspect 56a54bbd586940398e8f26dbc69949d1c6bca627d2d7bf9a8077c49c14d76ec2
+  961  docker network ls
+  962  docker image ls
+  963  docker volume ls
+  964  docker volume create kube_news_vol
+  965  docker volume inspect kube_news_vol
+  966  docker run -d -p 5432:5432 --name kube_news_db -e POSTGRES_PASSWORD=Pg123 -e POSTGRES_USER=kubenews -e POSTGRES_DB=kubenews --network kube_news_net -mount type=volume,source="kube_news_vol",target="/var/lib/postgresql/data" postgres:14
+  967  docker run -d -p 5432:5432 --name kube_news_db -e POSTGRES_PASSWORD=Pg123 -e POSTGRES_USER=kubenews -e POSTGRES_DB=kubenews --network kube_news_net --mount type=volume,source="kube_news_vol",target="/var/lib/postgresql/data" postgres:14
+  969  docker ps -a
+  991  make docker_run_postgre
+  993  make docker_run_postgre
+  994  docker run -d -p 8080:8080 --network kube_news_net -e DB_DATABASE=kubenews -e DB_USERNAME=kubenews -e DB_PASSWORD=Pg123 -e DB_HOST=localhost --name kube_news_app jorgedonato/kube-news:v1
+  995  docker ps -a
+  996  docker logs 7feb674f4d52
+  997  docker rm kube_news_app
+  998  docker run -d -p 8080:8080 --network kube_news_net -e DB_DATABASE=kubenews -e DB_USERNAME=kubenews -e DB_PASSWORD=Pg123 -e DB_HOST=192.168.15.60 --name kube_news_app jorgedonato/kube-news:v1
+  999  docker logs c174d877fe2b0db910a9cb8d320bb4d56df05693b00a12fce981744f4872b2df
+ 1000  make docker_run_postgre
+ 1002  docker rm -f kube_news_app kube_news_db
+ 1003  docker compose up -d
+ 1005  docker compose up -d -f ./scr/docker-compose.yaml
+ 1007  sudo apt search docker-compose
+ 1008  docker-compose
+ 1009  docker-compose up -d -f ./scr/docker-compose.yaml
+ 1011  docker-compose up -d
+ 1012  docker ps -a
+ 1013  docker logs kube_news_db
+ 1014  docker rm kube_news_app
+ 1015  docker rm kube_news_db
+ 1016  docker rm kube_news_db -f
+ 1017  docker-compose up -d
+ 1018  docker ps -a
+ 1019  docker logs kube_news_app
+ 1020  docker ps -a
+ 1021  docker rm kube_news_app
+ 1022  docker-compose up -d
+ 1023  docker ps -a
+ 1024  docker logs kube_news_app
+ 1025  docker compose version
+ 1026  docker -v
+ 1027  sudo apt search docker-compose
+ 1029  sudo apt search docker-compose
+ 1030  sudo apt install docker-compose-v2
+ 1031  docker compose version
+ 1032  docker compose up -d 
+ 1057  sudo systemctl status docker
+ 1062  cd docker
+ 1069  docker image ls
+ 1070  docker compose up -d 
+ 1071  docker image ls
+ 1072  docker ps -a
+ 1073  docker compose down
+ 1074  docker ps -a
+ 1075  docker image ls
+ 1076  docker ps -a
+ 1077  docker compose up -d 
+ 1078  docker ps -a
+ 1079  docker compose up -d 
+ 1080  docker ps -a
+ 1081  docker compose down
+ 1087  cd docker
+ 1092  docker compose down
+ 1093  docker ps -a
+ 1094  docker rm kube_news_app kube_news_db
+ 1095  docker image ls
+ 1096  docker volume ls
+ 1097  docker volume rm kube_news_vol
+ 1098  docker network ls
+ 1099  docker network rm kube_news_net
+ 1100  docker compose up -f teste -d 
+ 1101  docker compose up -h
+ 1102  docker compose up -f teste -d --dry-run
+ 1103  docker compose up  -d --dry-run
+ 1106  docker compose up  -d --dry-run
+ 1107  docker network ls
+ 1108  docker network prune
+ 1109  docker network create n8n-server_default
+ 1110  docker ps -a
+ 1111  docker rm 75cfa52b4d42
+ 1113  docker network ls
+ 1114  docker network rm n8n-server_default
+ 1115  docker volume ls
+ 1122  mv ./docker/ ~/Documents/workspace/estudos/
+ 1125  cd estudos/docker
+ 1139  docker compose up  -d --dry-run
+ 1140  docker compose up  -d
+ 1147  cd docker
+ 1150  docker ps -a
+ 1166  cd docker
+ 1170  docker compose down
+ 1171  docker image ls
+ 1172  docker compose up  -d --dry-run
+ 1173  docker compose up -d 
+ 1176  docker ps -a
+ 1177  docker logs webapi
+ 1178  docker logs mongodb
+ 1179  docker compose down
+ 1184  cd docker
+ 1187  docker logs webapi
+ 1191  docker ps -a
+ 1201  cd ./api-mongo-prometheus-lab/docker
+ 1204  docker la
+ 1205  docker ls
+ 1206  docker ps
+ 1216  docker ps -a
+ 1219  docker compose up -d 
+ 1220  docker compose down
+ 1222  docker compose up -d 
+ 1223  docker compose down
+ 1224  docker ps -a
+ 1225  docker rm -f $(docker ps -aq)
+ 1226  docker compose up -d 
+ 1227  docker rm -f $(docker ps -aq)
+ 1228  docker network rm pedelogo-catalogo
+ 1229  docker volime ls
+ 1230  docker volume ls
+ 1231  docker volume ls -q
+ 1232  docker volume rm $(docker volume ls -q)
+ 1233  docker volume ls
+ 1234  docker compose up -d 
+ 1235  docker ps -a
+ 1236  docker logs fa70420f7699
+ 1237  docker ps -a
+ 1238  docker compose down
+ 1241  docker compose up -d 
+ 1242  docker ps -a
+ 1243  docker compose down
+ 1244  docker compose up -d 
+ 1245  docker ps -a
+ 1246  docker compose down
+ 1247  docker compose up -d 
+ 1248  docker compose down
+ 1249  docker volume rm $(docker volume ls -q)
+ 1250  docker network rm $(docker network ls -q)
+ 1251  docker compose up -d 
+ 1256  docker compose up -d 
+ 1296  docker ps -a
+ 1297  docker compose down
+ 1298  docker compose up -d 
+ 1299  docker ps -a
+ 1313  docker ps -a
+ 1314  docker compose up -d 
+ 1316  docker compose up -d 
+ 1317  docker ps -a
+ 1320  cd docker
+ 1333  docker compose down
+ 1334  docker compose up -d 
+ 1335  docker ps -a
+ 1336  docker compose down
+ 1337  docker compose up -d 
+ 1338  docker compose down
+ 1339  docker compose up -d 
+ 1340  docker compose down
+ 1341  docker compose up -d 
+ 1342  docker ps -a
+ 1343  docker compose down
+ 1344  docker compose up -d 
+ 1345  docker ps -a
+ 1346  docker logs alertmanager
+ 1347  docker ps -a
+ 1348  docker logs alertmanager
+ 1349  docker ps -a
+ 1350  docker compose down
+ 1351  docker compose up -d 
+ 1352  docker ps -a
+ 1353  docker logs alertmanager
+ 1354  docker compose down
+ 1355  docker compose up -d 
+ 1356  docker ps -a
+ 1357  docker logs alertmanager
+ 1360  docker compose down
+ 1361  docker compose up -d 
+ 1362  docker ps -a
+ 1363  docker logs alertmanager
+ 1369  docker compose down
+ 1370  docker compose up -d 
+ 1371  docker compose down
+ 1372  docker compose up -d 
+ 1373  docker compose down
+ 1374  docker compose up -d 
+ 1376  docker compose down
+ 1377  docker ps -a
+ 1378  docker rm -f $(docker ps -aq)
+ 1379  docker compose down
+ 1380  docker compose up -d 
+ 1382  docker ps -a
+ 1383  docker network ls
+ 1384  docker network inspect 4e06b45fc62c
+ 1389  docker exec -ti mongodb_exporter /bin/bash
+ 1390  docker ps -a
+ 1391  docker exec -ti mongodb /bin/bash
+ 1392  docker image ls
+ 1393  docker run -d --name linux --network pedelogo ubuntu -- bash
+ 1394  docker run -d --name linux --network pedelogo ubuntu
+ 1395  docker rm -f linux
+ 1396  docker run -d --name linux --network pedelogo ubuntu
+ 1397  docker network inspect 4e06b45fc62c
+ 1398  docker inspect mongodblinux
+ 1399  docker inspect linux
+ 1400  docker exec -ti linux /bin/bash
+ 1401  docker ps -a
+ 1402  docker rm -f linux
+ 1403  docker run -d --name linux --network pedelogo ubuntu -- tail /dev/null
+ 1404  docker run -d --name linux --network pedelogo ubuntu -- tail -f /dev/null
+ 1405  docker rm -f linux
+ 1406  docker run -d --name linux --network pedelogo ubuntu -- tail -f /dev/null
+ 1407  docker run -d --name linux --network pedelogo ubuntu --tail -f /dev/null
+ 1408  docker rm -f linux
+ 1409  docker run -d --name linux --network pedelogo ubuntu --tail -f /dev/null
+ 1410  docker rm -f linux
+ 1411  docker run -d --name linux --network pedelogo ubuntu -- bash
+ 1412  docker run -d --name linux --network pedelogo ubuntu --bash
+ 1413  docker rm -f linux
+ 1414  docker run -d --rm --name linux --network pedelogo ubuntu --bash
+ 1415  docker run -d --rm --name linux --network pedelogo ubuntu bash
+ 1416  docker rm -f linux
+ 1417  docker run --help
+ 1418  docker run --help|grep command
+ 1419  docker run --help
+ 1420  docker run -d --rm --name linux --network pedelogo ubuntu -- sleep 1000
+ 1421  docker run -d --rm --name linux --network pedelogo -- sleep 10000 ubuntu
+ 1422  docker run -d --rm --name linux --network pedelogo ubuntu
+ 1423  history |grep docker
+ 1424  history |grep docker|grep ubuntu
+ 1425  history |grep docker|grep run 
+ 1426  docker run -d --rm --name linux ubuntu -- bash
+ 1427  docker run -d --rm --name linux ubuntu -- echo $PATH
+ 1428  docker run -d --rm --name linux ubuntu echo $PATH
+ 1429  docker run -d --rm --name linux ubuntu ls
+ 1430  docker run -d --rm --name linux --network pedelogo ubuntu /bin/sh
+ 1431  docker run -d --name linux --network pedelogo ubuntu /bin/sh
+ 1432  docker rm -f linux
+ 1433  docker run -d --rm --name linux --network pedelogo ubuntu sh
+ 1434  docker run -it --rm --name linux --network pedelogo ubuntu /bin/sh
+ 1435  docker run -it --rm --name linux --network pedelogo nicolaka/netshoot /bin/sh
+ 1436  docker compose down
+ 1437  docker compose up -d 
+ 1438  docker compose down
+ 1439  docker compose up -d 
+ 1440  docker compose down
+ 1441  docker compose up -d 
+ 1442  docker compose down
+ 1452  docker compose up -d 
+ 1453  docker compose down
+ 1454  docker compose up -d 
+ 1455  docker compose down
+ 1456  docker compose up -d 
+ 1458  docker network ls
+ 1459  docker network inspect 
+ 1460  docker network inspect pedelogo
+ 1461  docker run -it --rm --name linux --network pedelogo nicolaka/netshoot /bin/sh
+ 1462  docker compose down
+ 1464  docker compose up -d 
+ 1466  docker compose down
+ 1467  docker compose up -d 
+ 1469  docker compose down
+ 1471  docker compose down
+ 1473  docker compose down
+ 1474  docker compose up -d 
+ 1476  docker compose down
+ 1477  docker volume rm $(docker volume ls -q)
+ 1478  docker volume ls
+ 1479  docker volume ls -a
+ 1480  docker compose up -d 
+ 1482  docker compose down
+ 1483  docker compose up -d 
+ 1485  docker compose down
+ 1486  docker volume rm $(docker volume ls -q)
+ 1487  docker compose up -d 
+ 1488  docker ps -a
+ 1489  docker compose down
+ 1490  docker volume rm $(docker volume ls -q)
+ 1491  docker compose up -d 
+ 1492  docker ps -a
+ 1493  docker logs alertmanager
+ 1494  docker logs alertmanager -f
+ 1496  docker ps -a
+ 1497  docker compose down
+ 1498  docker volume rm $(docker volume ls -q)
+ 1499  docker compose up -d 
+ 1500  docker logs alertmanager -f
+ 1502  docker ps -a
+ 1503  docker compose down
+ 1504  docker volume rm $(docker volume ls -q)
+ 1505  docker compose up -d 
+ 1506  docker logs alertmanager -f
+ 1507  docker ps -a
+ 1508  docker compose down
+ 1509  docker volume rm $(docker volume ls -q)
+ 1510  docker compose up -d 
+ 1511  docker ps -a
+ 1512  docker logs alertmanager -f
+ 1514  docker compose down
+ 1515  docker volume rm $(docker volume ls -q)
+ 1516  docker ps -a
+ 1517  docker image ls
+ 1518  docker ps -a
+ 1519  docker compose up -d 
+ 1520  docker logs alertmanager -f
+ 1522  docker compose down
+ 1524  docker image ls
+ 1528  docker compose up -d 
+ 1529  docker logs alertmanager -f
+ 1531  docker compose down
+ 1532  docker volume rm $(docker volume ls -q)
+ 1533  docker compose up -d 
+ 1534  docker logs alertmanager -f
+ 1536  docker compose down
+ 1537  docker volume rm $(docker volume ls -q)
+ 1538  docker compose up -d 
+ 1539  docker logs alertmanager -f
+ 1541  docker compose down
+ 1542  docker volume rm $(docker volume ls -q)
+ 1543  docker compose up -d 
+ 1547  docker logs alertmanager -f
+ 1553  docker compose down
+ 1554  docker volume rm $(docker volume ls -q)
+ 1556  docker ps -a
+ 1557  docker image ls
+ 1574  alias |grep docker
+ 1593  history |grep run > docker_commands20260203.txt
+ 1595  rm -rf docker_commands20260203.txt
+ 1596  history |grep docker > docker_commands20260203.txt
+ 1597  cat docker_commands20260203.txt
+ 1599  vi docker_commands20260203.txt
+ 1603  docker container run -it ubuntu
+ 1604  docker container ls
+ 1605  docker container attach 812f4eade81b
+ 1606  docker container ls -a
+ 1607  docker container run -it ubuntu
+ 1610  docker container run -it ubuntu
+ 1611  docker container ls -a
+ 1612  docker container stats
+ 1613  docker container run -it ubuntu
+ 1614  docker container top
+ 1615  watch -n 2 docker container top zen_chatelet
+ 1616  docker container top
+ 1617  docker container top zen_chatelet
+ 1618  docker container logs -t  zen_chatelet
+ 1619  docker container logs -h
+ 1620  docker container logs -t  zen_chatelet --details
+ 1621  docker container logs -tf  zen_chatelet --details
+ 1622  docker container ls -a
+ 1623  docker container rm -f $(docker container ls -q)
+ 1624  docker container ls -a
+ 1625  docker container rm -f $(docker container ls -aq)
+ 1626  docker container ls -a
+ 1627  docker container --help
+ 1628  docker container ls --help
+ 1629  docker container run --help
+ 1630  docker container run -d --name meu nginx
+ 1631  docker images
+ 1632  docker --help
+ 1635  cd .docker
+ 1640  docker container ls -a
+ 1641  docker container exec -it meu bash
+ 1642  docker container rm -f $(docker container ls -aq)
+ 1643  docker container run -d -p 8080:80 --name meu nginx
+ 1644  docker container ls -a
+ 1645  docker container run -ti centos:7
+ 1646  docker container ls -a
+ 1647  docker container run -ti ubuntu
+ 1648  docker container ls -a
+ 1649  docker container rm -f $(docker container ls -aq)
+ 1650  history |grep docker > docker_commands20260203_mais_day1.txt
+ 1654  docker container ls -a
+ 1655  docker container run -d -p 8080:80 --name meu nginx
+ 1656  docker container exec -it meu bash
+ 1659  docker container build 
+ 1660  docker image build 
+ 1661  docker image build .
+ 1662  docker image build 
+ 1663  docker image build . -D
+ 1664  docker image build --help
+ 1665  docker image build -f ./Dockerfile01
+ 1666  docker image build -f ./Dockerfile01 .
+ 1668  docker container run -ti ubuntu -d 
+ 1669  docker container run -ti -d --name ubuntu ubuntu
+ 1670  docker container exec -it ecbd2398c47bd63df76cb737be6b4d223c2f709e7fda413a36b33a6234441191 bash
+ 1671  docker image build -f ./Dockerfile01 .
+ 1672  docker image build --help
+ 1673  docker image build image01 -f ./Dockerfile01 .
+ 1674  docker image build -f ./Dockerfile01 . image01
+ 1675  docker image build -f ./Dockerfile01 .
+ 1676  docker images
+ 1677  docker image build -f ./Dockerfile01 image01 .
+ 1678  docker image build -t imagem01 -f ./Dockerfile01 image01 .
+ 1679  docker image build -t imagem01 -f ./Dockerfile01 .
+ 1680  docker images
+ 1681  docker image rm 0ecd3448eee1 e3a64d8c5582
+ 1682  docker images
+ 1683  docker image build -t meu-nginx:1.0 -f ./Dockerfile01 .
+ 1684  docker images
+ 1685  docker image rm imagem01
+ 1686  docker image rm meu-nginx
+ 1687  docker image rm meu-nginx:1.0
+ 1688  docker image build -t meu-nginx:1.0 -f ./Dockerfile01 .
+ 1689  docker container run -ti -d -p 8080:80 --name meu-nginx meu-nginx:1.0
+ 1690  docker container rm -f $(docker container ls -aq)
+ 1691  docker container run -ti -d -p 8080:80 --name meu-nginx meu-nginx:1.0
+ 1692  docker container ls -a
+ 1694  docker image build -t meu-nginx:1.0 -f ./Dockerfile01 .
+ 1695  docker images
+ 1696  docker image rm meu-nginx:1.0
+ 1697  docker container ls -a
+ 1698  docker container exec -it meu-nginx bash
+ 1699  docker container rm -f $(docker container ls -aq)
+ 1700  docker container run -ti -d -p 8081:80 --name meu-nginx meu-nginx:1.0
+ 1701  docker container exec -it meu-nginx bash
+ 1702  docker container rm -f $(docker container ls -aq)
+ 1706  docker image build -t meu-nginx:2.0 -f ./Dockerfile02 .
+ 1707  docker container rm -f $(docker container ls -aq)
+ 1708  docker container run -ti -d -p 8080:80 --name meu-nginx meu-nginx:2.0
+ 1709  docker container exec -it meu-nginx bash
+ 1710  docker images
+ 1711  docker container exec -it meu-nginx bash
+ 1712  docker container rm -f $(docker container ls -aq)
+ 1713  docker image build -t meu-nginx:2.0 -f ./Dockerfile02 .
+ 1714  docker container run -ti -d -p 8080:80 --name meu-nginx meu-nginx:2.0
+ 1715  docker container exec -it meu-nginx bash
+ 1716  docker container rm -f $(docker container ls -aq)
+ 1717  docker image build -t meu-nginx:2.0 -f ./Dockerfile02 .
+ 1718  docker container run -ti -d -p 8080:80 --name meu-nginx meu-nginx:2.0
+ 1719  docker container exec -it meu-nginx bash
+ 1723  docker container rm -f $(docker container ls -aq)
+ 1724  docker image build -t meu-nginx:3.0 -f ./Dockerfile03 .
+ 1725  docker container run -ti -d -p 8083:80 --name meu-nginx3 meu-nginx:3.0
+ 1726  docker container ls -a
+ 1727  docker inspect meu-nginx3
+ 1728  cd /var/snap/docker/common/var-lib-docker/containers
+ 1730  docker history meu-nginx3
+ 1731  docker history meu-nginx:3.0
+ 1732  docker images
+ 1733  docker rmi -f a2e838b4e7be ce5d1ee6d989
+ 1734  docker images
+ 1738  docker images
+ 1739  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1740  docker images
+ 1741  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1742  docker container exec -it meu-nginx4 bash
+ 1743  docker container ls -a
+ 1744  docker container rm meu-nginx4
+ 1745  docker container rm meu-nginx4 -f
+ 1746  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1747  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1748  docker container ls -a
+ 1749  docker container rm meu-nginx4 -f
+ 1750  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1751  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1752  docker container ls -a
+ 1753  docker container exec -it meu-nginx4 bash
+ 1754  docker container ls -a
+ 1755  docker container exec -it meu-nginx4 bash
+ 1756  docker container ls -a
+ 1757  docker container rm meu-nginx4 -f
+ 1758  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1759  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1760  docker container ls -a
+ 1765  docker image build -t meu-nginx:5.0 -f ./Dockerfile05 .
+ 1766  docker container run -ti -d -p 8085:80 --name meu-nginx5 meu-nginx:5.0
+ 1767  docker container exec -it meu-nginx5 bash
+ 1768  docker container rm meu-nginx5 -f
+ 1769  docker container rmi meu-nginx:5.0
+ 1770  docker rmi meu-nginx:5.0
+ 1771  docker container rm meu-nginx4 -f
+ 1772  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1773  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1774  docker container exec -it meu-nginx4 bash
+ 1776  docker container rm meu-nginx4 -f
+ 1777  docker image build -t meu-nginx:4.0 -f ./Dockerfile04 .
+ 1778  docker container run -ti -d -p 8084:80 --name meu-nginx4 meu-nginx:4.0
+ 1788  docker login
+ 1789  docker image build -t go-hello:1.0 -f ./Dockerfile05 .
+ 1790  docker -h
+ 1791  docker version
+ 1792  whereis docker
+ 1798  sudo snap search docker
+ 1799  docker image build -t go-hello:1.0 -f ./Dockerfile05 .
+ 1800  docker container run --name meu-nginx4 meu-nginx:4.0
+ 1801  docker container run --name go-hello1 go-hello:1.0
+ 1803  docker container rm go-hello1 -f
+ 1805  docker image build -t go-hello:2.0 -f ./Dockerfile06 .
+ 1806  docker container run --name go-hello2 go-hello:2.0
+ 1807  docker images
+ 1808  docker image prune
+ 1809  docker images
+ 1810  docker container rm go-hello2 -f
+ 1811  docker image build -t go-hello:2.0 -f ./Dockerfile06 .
+ 1812  docker container run --name go-hello2 go-hello:2.0
+ 1814  docker image build -t go-hello:3.0 -f ./Dockerfile07 .
+ 1815  docker container run --name go-hello3 go-hello:3.0 echo $VAR
+ 1816  docker inspect go-hello3
+ 1817  docker container stats
+ 1818  docker image build -t go-hello:3.0 -f ./Dockerfile07 .
+ 1819  docker image build -t go-hello:3.0 -f ./Dockerfile07 --build-arg GIROPOPS=girus .
+ 1820  docker inspect go-hello3
+ 1821  docker container rm go-hello3 -f
+ 1822  docker container run --name go-hello3 go-hello:3.0
+ 1823  docker inspect go-hello3
+ 1826  docker > docker_commands20260206_mais_day2.txt
+ 1827  history | grep docker > docker_commands20260206_mais_day2.txt
+ 1831  docker image build -t go-hello:4.0 -f ./Dockerfile08 .
+ 1832  docker images
+ 1834  docker container run --name go-hello4 go-hello:4.0
+ 1835  docker container exec -it go-hello4 bash
+ 1836  docker container rm go-hello4 -f
+ 1837  docker container run -d --name go-hello4 go-hello:4.0
+ 1838  docker container exec -it go-hello4 bash
+ 1839  docker container rm go-hello4 -f
+ 1840  docker container run --name go-hello4 go-hello:4.0 --- env
+ 1841  docker container run --name go-hello4 go-hello:4.0 env
+ 1842  docker container rm go-hello4 -f
+ 1843  docker container run --name go-hello4 go-hello:4.0 env
+ 1844  docker container run --name go-hello4 go-hello:4.0 echo $SHELL
+ 1845  docker container rm go-hello4 -f
+ 1846  docker container run --name go-hello4 go-hello:4.0 echo $SHELL --rm
+ 1847  docker container rm go-hello4 -f
+ 1848  docker container run --rm --name go-hello4 go-hello:4.0 echo $SHELL
+ 1849  docker container run --rm --name go-hello4 go-hello:4.0 ls -ltrha /app/
+ 1850  docker volume ls
+ 1851  docker volume ls -a
+ 1852  docker volume ls -h
+ 1853  docker volume ls
+ 1854  docker container rm go-hello4 -f
+ 1855  docker image build -t go-hello:4.0 -f ./Dockerfile08 .
+ 1856  docker volume prune
+ 1857  docker container run --rm --name go-hello4 go-hello:4.0 ls -ltrhaR /app/
+ 1858  docker image build -t con-test:1.0 -f ./Dockerfile01-test .
+ 1859  docker container ls -a
+ 1860  docker container run -d --name meu-teste1 con-test:1.0 ls -ltrha /app/
+ 1861  docker container ls -a
+ 1862  docker container run --name meu-teste1 con-test:1.0 ls -ltrha /app/
+ 1863  docker container rm meu-teste1 -f
+ 1864  docker container run --name meu-teste1 con-test:1.0 ls -ltrha /app/
+ 1865  docker container rm meu-teste1 -f
+ 1866  docker image build -t con-test:1.0 -f ./Dockerfile01-test .
+ 1867  docker container run --name meu-teste1 con-test:1.0 ls -ltrha /app/
+ 1868  docker container rm meu-teste1 -f
+ 1869  docker container run --name meu-teste1 con-test:1.0 ls -ltrhaR /app/
+ 1870  docker container rm meu-teste1 -f
+ 1871  docker image build -t con-test:1.0 -f ./Dockerfile01-test .
+ 1872  docker container run --name meu-teste1 con-test:1.0 ls -ltrhaR /app/
+ 1873  docker container rm meu-teste1 -f
+ 1874  docker image build -t con-test:1.0 -f ./Dockerfile01-test .
+ 1875  docker container run --name meu-teste1 con-test:1.0 ls -ltrhaR /app/
+ 1876  docker container rm meu-teste1 -f
+ 1877  docker image build -t con-test:1.0 -f ./Dockerfile01-test .
+ 1878  docker container run --name meu-teste1 con-test:1.0 ls -ltrhaR /mnt
+ 1879  docker volume ls
+ 1880  docker container inspect meu-teste1
+ 1881  docker volume ls
+ 1882  docker container exec -it meu-teste1 sh
+ 1883  docker container rm meu-teste1 -f
+ 1884  docker container run --name meu-teste1 con-test:1.0 ls sh
+ 1885  docker container run --name meu-teste1 con-test:1.0 sh
+ 1886  docker container rm meu-teste1 -f
+ 1887  docker container run --name meu-teste1 con-test:1.0 sh
+ 1888  docker container exec -it meu-teste1 sh
+ 1889  docker container rm meu-teste1 -f
+ 1890  docker container run -d --name meu-teste1 con-test:1.0
+ 1891  docker container exec -it meu-teste1 sh
+ 1892  docker container rm meu-teste1 -f
+ 1893  docker container run -d --name meu-teste1 con-test:1.0 -v teste:5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4
+ 1894  docker container run -d --name meu-teste1 con-test:1.0 -v "teste:5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4"
+ 1895  docker container run -help
+ 1896  docker container run 
+ 1897  docker container run -h
+ 1898  docker container run -help
+ 1899  docker run
+ 1900  docker run -h
+ 1901  docker 
+ 1902  history |grep docker
+ 1903  docker container run -d --name meu-teste1 con-test:1.0 --mount type=volume,source="5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4",target="/var/lib/postgresql/data"
+ 1904  docker container rm meu-teste1 -f
+ 1905  docker container run -d --name meu-teste1 con-test:1.0 --mount type=volume,source="5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4",target="/var/lib/postgresql/data"
+ 1906  docker container run -d --mount type=volume,source="5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4",target="/var/lib/postgresql/data" --name meu-teste1 con-test:1.0
+ 1907  docker container rm meu-teste1 -f
+ 1908  docker container run -d --mount type=volume,source="5aeddbc60970ff613e74b114ef5373968022699337a370186984d4a873af5ba4",target="/var/lib/postgresql/data" --name meu-teste1 con-test:1.0
+ 1909  docker container exec -it meu-teste1 sh
+ 1910  docker container rm meu-teste1 -f
+ 1911  docker volume prune
+ 1915  docker image ls
+ 1916  docker image tag meu-nginx:4.0 jorgedonato/meu-nginx:4.0
+ 1917  docker image ls
+ 1918  docker image tag meu-nginx:4.0 jorgedonato/meu-nginx:latest
+ 1919  docker image ls
+ 1920  docker push jorgedonato/meu-nginx:4.0 jorgedonato/meu-nginx:latest
+ 1922  docker push jorgedonato/meu-nginx:4.0
+ 1923  docker push jorgedonato/meu-nginx:latest
+ 1924  docker image prune
+ 1925  docker image ls
+ 1933  docker image build -t jorgedonato/giropops-senhas:v1.0 .
+ 1935  docker container run -d -p 80:5000 --name giropops-senha jorgedonato/giropops-senha:v1.0
+ 1936  docker image tag jorgedonato/giropops-senhas:v1.0 jorgedonato/giropops-senhas:latest
+ 1937  docker image push jorgedonato/giropops-senhas:v1.0
+ 1938  docker image push jorgedonato/giropops-senhas:latest
+ 1939  docker container run -d -p 80:5000 --name giropops-senha jorgedonato/giropops-senha
+ 1940  docker container run -d -p 80:5000 --name giropops-senha jorgedonato/giropops-senha:v1.0
+ 1941  docker pull jorgedonato/giropops-senhas:v1.0
+ 1942  docker image build -t giropops-senhas:v1.0 .
+ 1943  docker container run -d -p 80:5000 --name giropops-senha giropops-senha:v1.0
+ 1944  docker images
+ 1945  docker container run -d -p 80:5000 --name giropops-senha giropops-senha:v1.0
+ 1946  docker images rm -f 9aef0dc71070
+ 1947  docker images rm 9aef0dc71070
+ 1948  docker image rm 9aef0dc71070
+ 1949  docker image rm -f 9aef0dc71070
+ 1950  docker image build -t giropops-senhas:v1.0 .
+ 1951  docker container run -d -p 80:5000 --name giropops-senha giropops-senha:v1.0
+ 1952  docker images
+ 1953  docker image rm -f cdd2b4640439
+ 1954  docker image build -t giropops-senhas:1.0 .
+ 1955  docker container run -d -p 80:5000 --name giropops-senha giropops-senha:1.0
+ 1956  docker login
+ 1957  docker container run -d -p 80:5000 --name giropops-senha giropops-senha:1.0
+ 1959  docker container run -p 80:5000 --name giropops-senha giropops-senha:1.0
+ 1960  docker container run -p 5000:5000 --name giropops-senha giropops-senha:1.0
+ 1961  docker images
+ 1962  docker container run -p 80:5000 --name giropops-senha giropops-senhas:1.0
+ 1963  docker container ls -a
+ 1976  docker run -h
+ 1977  docker run 
+ 1978  docker -h
+ 1979  docker run --name redis-service -h redis-service -p 6379:6379 -d redis:6-alpine
+ 1980  docker ps -a
+ 1981  docker ps
+ 1983  docker logs giropops-senha
+ 1984  docker container rm redis-service -f
+ 1985  docker run --name redis-service -e REDIS_HOST=0.0.0.0 -h redis-service -p 6379:6379 -d redis:6-alpine
+ 1986  docker logs giropops-senha
+ 1987  docker container rm redis-service -f
+ 1988  docker ps
+ 1989  docker container rm giropops-senha-f
+ 1990  docker container rm giropops-senha -f
+ 1991  docker container run -d -e REDIS_HOST=0.0.0.0 -p 5000:5000 --name giropops-senhas giropops-senha:v1.0
+ 1992  docker container run -d -e REDIS_HOST=0.0.0.0 -p 5000:5000 --name giropops-senhas giropops-senhas:v1.0
+ 1993  docker container run -d -e REDIS_HOST=0.0.0.0 -p 5000:5000 --name giropops-senhas giropops-senhas:1.0
+ 1994  docker run --name redis-service -h redis-service -p 6379:6379 -d redis:6-alpine
+ 1995  docker logs giropops-senhas -f
+ 1996  docker container rm giropops-senhas -f
+ 1997  docker container run -d -e REDIS_HOST=0.0.0.0 -p 5000:5000 --name giropops-senhas giropops-senhas:1.0
+ 1998  docker logs giropops-senhas -f
+ 2001* docker container exec -it giropops-senhas bash
+ 2002  docker container rm giropops-senhas -f
+ 2003  docker container run -d -e REDIS_HOST=192.168.15.60 -p 5000:5000 --name giropops-senhas giropops-senhas:1.0
+ 2004  history |grep docker > docker_commands20260207_mais_day3_01.txt
+ 2005  docker container rm giropops-senhas -f
+ 2006  docker image build -t giropops-senhas:1.0 .
+ 2007  docker container run -d -p 5000:5000 --name giropops-senhas giropops-senhas:1.0
+ 2008  docker logs giropops-senhas -f
+ 2010* docker run --help
+ 2011* docker container run --help
+ 2012* history |grep docker > docker_commands20260207_mais_day3_01.txt
+ 2013* docker images
+ 2014* docker container history
+ 2015* docker history 4453c99495b0
+ 2016* docker image prune
+ 2017* docker image build -t giropops-senhas:2.0 .
+ 2018* docker images|grep giro
+ 2019* docker image build -t giropops-senhas:3.0 .
+ 2020* docker images|grep giro
+ 2021* docker image build -t giropops-senhas:4.0 .
+ 2022* docker images|grep giro
+ 2023* docker image build -t giropops-senhas:5.0 .
+ 2024* docker images|grep giro
+ 2025* docker image build -t giropops-senhas:6.0 .
+ 2026* docker images|grep giro
+ 2027* docker image rm giropops-senhas:6.0
+ 2028* docker images|grep giro
+ 2029* docker image rm giropops-senhas:6.0
+ 2030* docker image build -t giropops-senhas:6.0 .
+ 2031* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2032* docker run -ti --name teste cgr.dev/chainguard/python:latest-dev sh
+ 2033* docker run -ti --name teste cgr.dev/chainguard/python:latest-dev env
+ 2034* docker container rm teste -f
+ 2035* docker run -ti --name teste cgr.dev/chainguard/python:latest-dev env
+ 2036* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2037* docker run -ti --name teste cgr.dev/chainguard/python:latest-dev ls -ltr /
+ 2038* docker container rm teste -f
+ 2039* docker run -ti --rm --name teste cgr.dev/chainguard/python:latest-dev ls -ltr /
+ 2040* docker run -d --name teste cgr.dev/chainguard/python:latest-dev 
+ 2041* docker ps -a
+ 2042* docker ps
+ 2043* docker container rm  $(docker container ls -aq)
+ 2044* docker ps
+ 2045* docker ps -a
+ 2046* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2047* docker images
+ 2048* docker history efb12cee5714
+ 2049* docker inspect efb12cee5714
+ 2050* docker run -d --name teste cgr.dev/chainguard/python:latest-dev bash
+ 2051* docker ps
+ 2052* docker run -d --name teste cgr.dev/chainguard/python:latest-dev
+ 2053* docker container rm  $(docker container ls -aq)
+ 2054* docker run -d --name teste cgr.dev/chainguard/python:latest-dev
+ 2055* docker ps
+ 2056* docker container rm  $(docker container ls -aq)
+ 2057* docker exec -ti giropops-senhas /bin/bash
+ 2058* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2059* docker run -it -name dev --entrypoint /bin/sh cgr.dev/chainguard/php:latest-dev
+ 2060* docker run -it --entrypoint /bin/sh cgr.dev/chainguard/php:latest-dev
+ 2061* docker run -it --entrypoint /bin/sh cgr.dev/chainguard/python:latest-dev
+ 2062* docker container rm  $(docker container ls -aq)
+ 2063* docker run -it --rm --entrypoint /bin/sh cgr.dev/chainguard/python:latest-dev
+ 2064* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2065* docker container rm  $(docker container ls -aq)
+ 2066* docker image prune
+ 2067* docker image ls
+ 2068* docker container run -d -p 5001:5000 --name giropops-senhas:6.0 giropops-senhas:6.0
+ 2069* docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2070* docker logs giropops-senhas06
+ 2071* docker container ls
+ 2072* docker container rm  $(docker container ls -aq)
+ 2073* docker image prune
+ 2074* docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2075* docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2076* docker logs giropops-senhas06
+ 2077* docker run -it --rm --entrypoint /bin/sh cgr.dev/chainguard/python:latest-dev
+ 2078  docker container rm  $(docker container ls -aq)
+ 2079  docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2080  docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2081  docker logs giropops-senhas06
+ 2082  docker container rm  $(docker container ls -aq)
+ 2083  docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2084  docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2085  docker logs giropops-senhas06
+ 2086  docker container rm  $(docker container ls -aq)
+ 2087  docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2088  docker container rm  $(docker container ls -aq)
+ 2089  docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2090  docker logs giropops-senhas06
+ 2091  docker images
+ 2092  docker image pru
+ 2093  docker image prune
+ 2094  docker images
+ 2095  docker container ls
+ 2096  docker container rm giropops-senhas06 -f
+ 2097  docker image build -t giropops-senhas:6.0 -f ./Dockerfile-chainguard .
+ 2098  docker container run -d -p 5001:5000 --name giropops-senhas06 giropops-senhas:6.0
+ 2099  docker history giropops-senhas06
+ 2100  docker history giropops-senhas:6.0

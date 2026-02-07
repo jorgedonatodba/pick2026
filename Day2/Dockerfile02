@@ -1,0 +1,13 @@
+FROM ubuntu
+
+RUN apt update && apt install nginx -y && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html/
+
+COPY index.html .
+
+EXPOSE 80
+
+ENV GIROPOPIS=true
+
+CMD ["nginx","-g"," daemon off;"]
