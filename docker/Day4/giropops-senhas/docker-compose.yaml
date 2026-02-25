@@ -1,0 +1,81 @@
+services:
+  giropops:
+    build:
+      context: .
+      dockerfile: Dockerfile-chainguard
+    #container_name: giropops
+    hostname: giropops
+    #image: linuxtips/giropops-senhas:1.0
+    labels:
+      com.docker.compose.description: "Giropops Senhas App"
+      com.docker.compose.version: "1.0" 
+    pull_policy: always
+    ports:
+      - "5000:5000"
+    networks:
+      - giropops
+    environment:
+      REDIS_HOST: "redis"
+    #env_file:
+    #  - file.env
+    volumes:
+      - type: volume
+        source: giropops_vol
+        target: /giropops
+    #  - giropops_vol:/giropops
+    depends_on:
+      - redis
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb"  
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 127.0.0.53
+    deploy:
+      replicas: 1
+      update_config: 
+        parallelism: 1
+        delay: 10s
+      resources:
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+        limits:
+          cpus: "0.5"
+          memory: 256M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  redis:
+    #container_name: redis
+    hostname: redis
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - giropops
+    volumes:
+      - giropops_vol:/giropops
+    
+
+networks:
+  giropops:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.0/16"
+    labels:
+      io.linuxtips.network: "Giropops Network"
+
+volumes:
+  giropops_vol:    
+    driver: local
+    driver_opts:
+      type: "none"
+      device: /home/donato/
+      o: "bind"
+    labels:
+      io.linuxtips.volume: "Giropops Volume"

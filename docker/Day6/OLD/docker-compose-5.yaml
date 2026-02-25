@@ -1,0 +1,75 @@
+services:
+  giropops:
+    container_name: giropops
+    image: linuxtips/giropops-senhas:1.0
+    ports:
+      - "5000:5000"
+    networks:
+      - giropops
+    environment:
+      REDIS_HOST: "redis"
+    volumes:
+      - giropops_vol:/giropops
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+        limits:
+          cpus: "0.5"
+          memory: 256M
+    # healthcheck:
+    #   test: ["CMD", "redis-cli","ping"]
+    #   interval: 30s
+    #   timeout: 5s
+    #   retries: 3
+    #   start_period: 10s
+    depends_on:
+      - redis
+
+  giropops-app-health:
+    container_name: giropops-app-health
+    image: busybox:1.36
+    command: ["sleep", "infinity"]
+    healthcheck:
+      test: wget -O - http://localhost:5000
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+    network_mode: "service:giropops"
+    #networks:
+    #  - giropops
+
+  redis:
+    container_name: redis
+    image: redis:6-alpine
+    command: redis-server --appendonly yes
+    #ports:
+    #  - "6379:6379"
+    networks:
+      - giropops
+    volumes:
+      - giropops_vol:/giropops
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+        limits:
+          cpus: "0.5"
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  giropops:
+    driver: bridge
+
+volumes:
+  giropops_vol:    
