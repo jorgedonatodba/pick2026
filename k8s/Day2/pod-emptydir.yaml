@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: girus
+    service: webserver
+  name: girus
+spec:
+  containers:
+  - image: nginx
+    name: girus
+    volumeMounts: # lista de volumes que serão montados no container
+    - name: pempdir # nome do volume
+      mountPath: /giropops # diretório onde o volume será montado 
+    resources:
+      limits:
+        cpu: "1"
+        memory: "512Mi"
+      requests:
+        cpu: "0.5"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: pempdir
+    emptyDir:
+      sizeLimit: "256Mi"
