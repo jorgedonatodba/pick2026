@@ -1,0 +1,45 @@
+# Crie o DaemonSet aqui
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: log-collector
+spec:
+  selector:
+    matchLabels:
+      app: log-collector
+  template:
+    metadata:
+      labels:
+        app: log-collector
+    spec:
+      containers:
+      - name: fluentd
+        image: fluent/fluentd:v1.16
+        ports:
+        - containerPort: 24224
+          name: fluent-tcp
+          protocol: TCP
+        - containerPort: 24224
+          name: fluent-udp
+          protocol: UDP
+        volumeMounts:
+        - name: data
+          mountPath: /host/fluentd/log
+          readOnly: false
+        - name: etc
+          mountPath: /host/fluentd/etc
+          readOnly: true        
+        resources:
+          limits:
+            cpu: 0.5
+            memory: 256Mi
+          requests:
+            cpu: 0.25
+            memory: 128Mi
+      volumes:
+      - name: data
+        hostPath: 
+          path: /data             
+      - name: etc
+        hostPath: 
+          path: /fluentd/etc

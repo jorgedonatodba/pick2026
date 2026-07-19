@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      volumes:
+      - name: pvc-volume-u01-vol
+        persistentVolumeClaim:
+          claimName: pvc-volume    
+      containers:
+        - name: app1
+          image: hashicorp/http-echo
+          args:
+            - "-text=Giropops Strigus Girus na APP1"
+          ports:
+            - containerPort: 5678
+          volumeMounts:
+          - name: pvc-volume-u01-vol
+            mountPath: /u01    

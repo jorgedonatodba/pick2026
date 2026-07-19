@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app3
+  template:
+    metadata:
+      labels:
+        app: app3
+    spec:
+      volumes:
+      - name: pvc-volume-u03-vol
+        persistentVolumeClaim:
+          claimName: pvc-volume    
+      containers:
+        - name: app3
+          image: nginx
+          # args:
+          #   - "-text=Giropops Strigus Girus na app3"
+          ports:
+            - containerPort: 5678
+          volumeMounts:
+          - name: pvc-volume-u03-vol
+            mountPath: /u03                
