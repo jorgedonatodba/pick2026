@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dockerhub-pod
+spec:
+  containers:
+  - name: dockerhub-container
+    image: jorgedonato/meu-nginx:latest
+  imagePullSecrets:
+  - name: dockerhub-secret
