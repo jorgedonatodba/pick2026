@@ -1,0 +1,67 @@
+Client:
+ Version:    28.2.2
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  0.21.3
+    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  2.37.1+ds1-0ubuntu2~22.04.1
+    Path:     /usr/libexec/docker/cli-plugins/docker-compose
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.19.0
+    Path:     /home/donato/.docker/cli-plugins/docker-scout
+
+Server:
+ Containers: 9
+  Running: 1
+  Paused: 0
+  Stopped: 8
+ Images: 153
+ Server Version: 29.6.1
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Using metacopy: false
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: aad11006b869517fcd3009450b6f82da282e1a9b
+ runc version: 
+ init version: de40ad0
+ Security Options:
+  apparmor
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 6.17.4-76061704-generic
+ Operating System: Pop!_OS 22.04 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 15.61GiB
+ Name: pick
+ ID: 1299ac61-8db2-4ada-9240-ca29b3d313a0
+ Docker Root Dir: /var/snap/docker/common/var-lib-docker
+ Debug Mode: false
+ Username: jorgedonato
+ Experimental: false
+ Insecure Registries:
+  ::1/128
+  127.0.0.0/8
+ Live Restore Enabled: false
+

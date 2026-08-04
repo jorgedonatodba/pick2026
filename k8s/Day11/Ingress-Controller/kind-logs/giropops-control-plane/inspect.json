@@ -1,0 +1,256 @@
+[
+    {
+        "Id": "5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57",
+        "Created": "2026-07-31T17:36:35.914676139Z",
+        "Path": "/usr/local/bin/entrypoint",
+        "Args": [
+            "/sbin/init"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 19479,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-07-31T17:36:45.938660079Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:152b34afd8a2de5c8348a264426bc99b71058ee0e1a15eab9b30849605e4752d",
+        "ResolvConfPath": "/var/snap/docker/common/var-lib-docker/containers/5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57/resolv.conf",
+        "HostnamePath": "/var/snap/docker/common/var-lib-docker/containers/5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57/hostname",
+        "HostsPath": "/var/snap/docker/common/var-lib-docker/containers/5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57/hosts",
+        "LogPath": "/var/snap/docker/common/var-lib-docker/containers/5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57/5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57-json.log",
+        "Name": "/giropops-control-plane",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "unconfined",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/lib/modules:/lib/modules:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "kind",
+            "PortBindings": {
+                "443/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "44631"
+                    }
+                ],
+                "6443/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "37399"
+                    }
+                ],
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "80"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "on-failure",
+                "MaximumRetryCount": 1
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "seccomp=unconfined",
+                "apparmor=unconfined",
+                "label=disable"
+            ],
+            "Tmpfs": {
+                "/run": "",
+                "/tmp": ""
+            },
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": null,
+            "ReadonlyPaths": null,
+            "Init": false
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "5fb0fed7bf49ec77ae8caab473165e4bc706867548897099f84d53459275fd57",
+                "LowerDir": "/var/snap/docker/common/var-lib-docker/overlay2/650a904a3b655b1cb36215c223b1299984333d35d59a4221d8b032baecade8a6-init/diff:/var/snap/docker/common/var-lib-docker/overlay2/fb62722a5745c7495da4508998cd43cffb656dcd000592f7b1237b9c11cd1442/diff:/var/snap/docker/common/var-lib-docker/overlay2/777d2781d959451f6c49e2328c5d54a747eba4850c9aa4d0c87dc9b233cf81c1/diff",
+                "MergedDir": "/var/snap/docker/common/var-lib-docker/overlay2/650a904a3b655b1cb36215c223b1299984333d35d59a4221d8b032baecade8a6/merged",
+                "UpperDir": "/var/snap/docker/common/var-lib-docker/overlay2/650a904a3b655b1cb36215c223b1299984333d35d59a4221d8b032baecade8a6/diff",
+                "WorkDir": "/var/snap/docker/common/var-lib-docker/overlay2/650a904a3b655b1cb36215c223b1299984333d35d59a4221d8b032baecade8a6/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/lib/modules",
+                "Destination": "/lib/modules",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "3dd2f9b202d40a328d964c1fcf72ec3cb8012c5849e6dee8ecf0e27fc6b058c0",
+                "Source": "/var/snap/docker/common/var-lib-docker/volumes/3dd2f9b202d40a328d964c1fcf72ec3cb8012c5849e6dee8ecf0e27fc6b058c0/_data",
+                "Destination": "/var",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "giropops-control-plane",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "443/tcp": {},
+                "6443/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": true,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "KIND_EXPERIMENTAL_CONTAINERD_SNAPSHOTTER",
+                "KUBECONFIG=/etc/kubernetes/admin.conf",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "container=docker",
+                "HTTP_PROXY=",
+                "HTTPS_PROXY=",
+                "NO_PROXY="
+            ],
+            "Cmd": null,
+            "Image": "kindest/node:v1.36.1@sha256:3489c7674813ba5d8b1a9977baea8a6e553784dab7b84759d1014dbd78f7ebd5",
+            "Volumes": {
+                "/var": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/usr/local/bin/entrypoint",
+                "/sbin/init"
+            ],
+            "Labels": {
+                "io.x-k8s.kind.cluster": "giropops",
+                "io.x-k8s.kind.role": "control-plane"
+            },
+            "StopSignal": "SIGRTMIN+3"
+        },
+        "NetworkSettings": {
+            "SandboxID": "89fa07daf4d0a68ba9b20877be96cdf0b853cbff33b6bb83c581edaf79a4bce8",
+            "SandboxKey": "/run/snap.docker/netns/89fa07daf4d0",
+            "Ports": {
+                "443/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "44631"
+                    }
+                ],
+                "6443/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "37399"
+                    }
+                ],
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "80"
+                    }
+                ]
+            },
+            "Networks": {
+                "kind": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "332e5a173328d065897f41322ba349e9586d078c5cdf8dc9e2589bfc82993201",
+                    "EndpointID": "2121b2edb72eb3f55698ec9c2b0aabfdb9d001ec18ae0db5f6f28ab908ac02a7",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.2",
+                    "MacAddress": "a6:9f:f2:14:8a:c2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "fc00:f853:ccd:e793::1",
+                    "GlobalIPv6Address": "fc00:f853:ccd:e793::2",
+                    "GlobalIPv6PrefixLen": 64,
+                    "DNSNames": [
+                        "giropops-control-plane",
+                        "5fb0fed7bf49"
+                    ]
+                }
+            }
+        }
+    }
+]
