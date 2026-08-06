@@ -1,0 +1,5 @@
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.21.1/cert-manager.yaml
+
+kubectl rollout restart daemonset/calico-node -n kube-system
+
+kubectl get pods --all-namespaces | grep ContainerStatusUnknown | awk '{print "kubectl delete pod "$2" -n "$1" --force --grace-period=0"}' | sh
