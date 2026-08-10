@@ -1,0 +1,10 @@
+kubectl logs -f metrics-server-687f9dc499-bq797 -n kube-system 
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+Link do PICK: https://linuxtips.io/pick/
+Link do Strigus: https://strigus.io
+Link do aDaily: https://adaily.dev
+Link do Girus: https://girus.io
+
+Para fazer o download do seu lab exemplo do Strigus: https://quiz.linuxtips.io/lab-strigus
