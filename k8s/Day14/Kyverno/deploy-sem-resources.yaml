@@ -12,6 +12,7 @@ spec:
   template:
     metadata:
       labels:
+        environment: production      
         app: nginx
     spec:
       containers:
@@ -19,7 +20,7 @@ spec:
         name: nginx
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            cpu: 0.02
-            memory: 32Mi
+        # resources:
+        #   limits:
+        #     cpu: 0.02
+        #     memory: 32Mi

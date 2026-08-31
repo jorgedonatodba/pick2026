@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: nginx
+    
   name: nginx
 spec:
   replicas: 2
@@ -12,6 +13,7 @@ spec:
   template:
     metadata:
       labels:
+        environment: production
         app: nginx
     spec:
       containers:

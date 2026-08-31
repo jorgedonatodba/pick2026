@@ -1,4 +1,6 @@
+#export KUBECONFIG=~/.kube/config:/home/donato/.kube/config-strigus.yaml
 #kubectl label nodes devops-control-plane ingress-ready=true
+#kubectl config set-cluster kind-strigus --insecure-skip-tls-verify=true
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
