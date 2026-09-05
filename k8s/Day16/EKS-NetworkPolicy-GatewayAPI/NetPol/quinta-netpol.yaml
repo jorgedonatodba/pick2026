@@ -1,0 +1,32 @@
+#kubectl label namespace nginx-gateway network-role=ingress-gateway
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: quinta-netpol
+  namespace: giropops
+spec:
+  # 1. Isolate the target application pods
+  # podSelector:
+  #   matchLabels:
+  #     app: my-backend-app
+  
+  policyTypes:
+  - Ingress
+
+  # 2. White-list incoming traffic ONLY from NGINX Gateway Fabric
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: giropops
+    - namespaceSelector:
+        matchLabels:
+          network-role: ingress-gateway
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: nginx-gateway-fabric
+    
+    # # 3. Restrict traffic to the specific ports your application exposes
+    # ports:
+    # - protocol: TCP
+    #   port: 8080

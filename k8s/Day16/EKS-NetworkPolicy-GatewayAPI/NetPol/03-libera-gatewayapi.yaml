@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: libera-ingress-gatewayapi
+  namespace: giropops
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  #   - Egress
+  # egress:
+  #   - to:
+  #     - namespaceSelector:
+  #         matchExpressions:
+  #           - key: kubernetes.io/metadata.name
+  #             operator: In
+  #             values: 
+  #               - nginx-gateway
+  #               - kube-system
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchExpressions:
+            - key: kubernetes.io/metadata.name
+              operator: In
+              values:
+                - nginx-gateway
+                - kube-system
+      ports:
+        - protocol: TCP
+          port: 5000

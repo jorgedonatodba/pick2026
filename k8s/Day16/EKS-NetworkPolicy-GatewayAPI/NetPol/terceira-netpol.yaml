@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: terceira-netpol
+  namespace: giropops
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress: #mesmo com todas as ns declaradas, o tráfego de entrada não é permitido, pois o tráfego de entrada não funciona. Preciso fazer o troubleshooting do tráfego de entrada.
+    - from: 
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: giropops
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: nginx-gateway
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: default
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-node-lease
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-public
+      - podSelector:
+          matchLabels:
+            app.kubernetes.io/name: nginx-gateway-fabric
+        

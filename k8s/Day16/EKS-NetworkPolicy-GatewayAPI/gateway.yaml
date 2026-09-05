@@ -1,7 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: my-gateway
+  name: http-gateway
+  namespace: giropops
 spec:
   gatewayClassName: nginx
   listeners:
