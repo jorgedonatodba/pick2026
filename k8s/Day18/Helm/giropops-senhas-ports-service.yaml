@@ -1,0 +1,21 @@
+{{- range .Values.services.giropopsSenhas.ports }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}
+  labels:
+    app: {{ .name}}
+spec:
+  selector:
+    app: {{ $.Values.services.giropopsSenhas.labels.app }}  
+  ports:
+    - port: {{ .port }}
+      targetPort: {{ .targetPort }}
+      name: {{ .name }}
+      protocol: {{ .protocol }}
+{{- if eq .serviceType "NodePort" }}
+      nodePort: {{ .nodePort }}
+{{- end }}      
+  type: {{ .serviceType }}
+{{- end }}

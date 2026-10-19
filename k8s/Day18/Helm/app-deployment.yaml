@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+   app: {{.Values.deployments.giropopsSenhas.labels.app}}
+  name: {{.Values.deployments.giropopsSenhas.name}}
+spec:
+  replicas: {{.Values.deployments.giropopsSenhas.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.deployments.giropopsSenhas.labels.app}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deployments.giropopsSenhas.labels.app}}
+    spec:
+      containers:
+      - image: {{.Values.deployments.giropopsSenhas.image}}
+        name: {{.Values.deployments.giropopsSenhas.name}}
+        ports:
+        - containerPort: {{.Values.deployments.giropopsSenhas.port}}
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: {{.Values.deployments.giropopsSenhas.resources.limits.cpu}}
+            memory: {{.Values.deployments.giropopsSenhas.resources.limits.memory}}
+          requests:
+            cpu: {{.Values.deployments.giropopsSenhas.resources.requests.cpu}}
+            memory: {{.Values.deployments.giropopsSenhas.resources.requests.memory}}
